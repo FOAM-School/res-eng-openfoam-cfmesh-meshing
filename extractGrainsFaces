@@ -1,0 +1,4 @@
+faceSet grainsSet new patchToFace "(auto.*)"
+faceSet grainsSet delete faceToFace inletSet
+faceSet grainsSet delete faceToFace outletSet
+faceSet grainsSet delete faceToFace frontAndBackSet

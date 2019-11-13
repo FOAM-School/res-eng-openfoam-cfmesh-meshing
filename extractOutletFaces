@@ -1,0 +1,12 @@
+# Create a faceSet out of auto0 patch using patchToFace source
+faceSet outletSet new patchToFace auto0
+
+# Delete all faces where x coordinate is less than 141 (Keeping the far right ones)
+faceSet outletSet delete boxToFace (0 0.028 -2.5) (141 141.139 2.5)
+
+# Create a set for faces whose normals are not (1 0 0)  (tolerance = 1e-3)
+faceSet f0 new normalToFace (1 0 0) 1e-3
+faceSet f0 invert f0
+
+# Remove these faces from the outlet set
+faceSet outletSet delete faceToFace f0

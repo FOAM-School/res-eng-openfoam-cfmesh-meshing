@@ -1,0 +1,65 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     4.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  | For copyright notice see file Copyright         |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      createPatchDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+pointSync false;
+matchTolerance 1e-3;
+writeCyclicMatch  false;
+
+// Patches to create.
+patchInfo
+(
+{   
+	name inlet;
+	dictionary  
+	{ 
+		type patch;  
+		neighbourPatch auto0;  
+	}
+	constructFrom set;
+	set inletSet;             
+}
+{   
+	name outlet;
+	dictionary  
+	{ 
+		type patch;  
+		neighbourPatch auto0;  
+	}
+	constructFrom set;
+	set outletSet;            
+}
+{   
+	name frontAndBack;
+	dictionary  
+	{ 
+		type empty;  
+		neighbourPatch auto0;  
+	}
+	constructFrom set;
+	set frontAndBackSet;  
+}
+{   
+	name grains;
+	dictionary  
+	{ 
+		type wall; 
+ 		neighbourPatch auto0;  
+	}
+	constructFrom set;
+	set grainsSet;            
+}
+);
+// ************************************************************************* //
